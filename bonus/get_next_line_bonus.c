@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:09:27 by yeonhkim          #+#    #+#             */
-/*   Updated: 2022/08/04 17:13:10 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/03 13:24:15 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,21 +79,3 @@ char	*get_next_line(int fd)
 	}
 	return (final_complete_line(&line, buf, buf->offset, buf->lf_idx));
 }
-
-// #include <stdio.h>
-// #include <fcntl.h>
-// int main()
-// {
-// 	int fd1 = open("test1", O_RDONLY);
-// 	//int fd2 = open("test2", O_RDONLY);
-// 	for(int i = 0; i < 10; i++)
-// 	{
-// 		char *line1 = get_next_line(fd1);
-// 		//char *line2 = get_next_line(fd2);
-// 		printf("%s", line1);
-// 		//printf("%s", line2);
-// 		free(line1);
-// 		//free(line2); 
-// 	}
-// 	//system("leaks a.out > leaks");
-// }

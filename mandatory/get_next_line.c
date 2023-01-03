@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:09:27 by yeonhkim          #+#    #+#             */
-/*   Updated: 2022/08/04 14:48:22 by yona             ###   ########.fr       */
+/*   Updated: 2023/01/03 13:24:10 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,3 @@ char	*get_next_line(int fd)
 	return (final_append_and_complete_line(&line, &buf, buf.offset, \
 	buf.lf_idx));
 }
-
-// #include <stdio.h>
-// #include <fcntl.h>
-// int main()
-// {
-// 	int fd1 = open("test1", O_RDONLY);
-// 	//int fd2 = open("test2.txt", O_RDONLY);
-// 	if(fd1)
-// 		;
-// 	for(int i = 0; i < 10; i++)
-// 	{
-// 		char *line = get_next_line(fd1);
-// 		printf("%s", line);
-// 		free(line);
-// 	}
-// 	system("leaks a.out");
-// }
