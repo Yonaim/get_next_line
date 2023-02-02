@@ -6,7 +6,7 @@
 /*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 14:51:55 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/02/02 13:26:55 by yona             ###   ########.fr       */
+/*   Updated: 2023/02/02 16:58:33 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE	1024
 # endif
-
-# define NO_CONTENT		0
 
 enum e_success_or_failure {
 	SUCCESS = 0,

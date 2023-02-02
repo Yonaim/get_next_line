@@ -6,7 +6,7 @@
 /*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:09:27 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/02/02 13:26:57 by yona             ###   ########.fr       */
+/*   Updated: 2023/02/02 16:58:09 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*get_next_line(int fd)
 	int						fd_stat;
 
 	line.str = NULL;
-	line.len = NO_CONTENT;
+	line.len = 0;
 	while (find_next_lf_idx(&buf) == FAILURE)
 	{
 		append_buf_to_line(&line, &buf, buf.offset, buf.rbytes - 1);
@@ -57,7 +57,7 @@ char	*get_next_line(int fd)
 		}
 		else if (fd_stat == EOF_REACHED_FD)
 		{
-			if (line.len == NO_CONTENT && buf.rbytes == NO_CONTENT)
+			if (line.len == 0 && buf.rbytes == 0)
 				return (NULL);
 			else if (find_next_lf_idx(&buf) == FAILURE)
 				return (final_complete_line(&line, &buf, LF_NONE));
