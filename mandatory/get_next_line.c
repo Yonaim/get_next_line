@@ -6,7 +6,7 @@
 /*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:09:27 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/02/02 16:58:09 by yona             ###   ########.fr       */
+/*   Updated: 2023/02/02 17:06:51 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,7 @@ char	*get_next_line(int fd)
 		append_buf_to_line(&line, &buf, buf.offset, buf.rbytes - 1);
 		do_read_next(fd, &buf, &fd_stat);
 		if (fd_stat == INVALID_FD)
-		{
-			free(line.str);
 			return (NULL);
-		}
 		else if (fd_stat == EOF_REACHED_FD)
 		{
 			if (line.len == 0 && buf.rbytes == 0)
