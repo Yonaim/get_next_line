@@ -6,7 +6,7 @@
 /*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 14:51:55 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/02/02 04:58:45 by yona             ###   ########.fr       */
+/*   Updated: 2023/02/02 13:26:55 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ enum e_success_or_failure {
 };
 
 enum e_status_of_fd {
-	NORMAL = 0,
-	INVALID,
-	EOF_REACHED,
+	NORMAL_FD = 0,
+	INVALID_FD,
+	EOF_REACHED_FD,
 };
 
 enum e_lf_exist_or_not {

@@ -6,7 +6,7 @@
 /*   By: yona <yona@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 15:09:27 by yeonhkim          #+#    #+#             */
-/*   Updated: 2023/02/02 04:58:45 by yona             ###   ########.fr       */
+/*   Updated: 2023/02/02 13:26:57 by yona             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,21 @@ static void	do_read_next(int fd, t_buff *buf, int *fd_stat)
 	const int	rbytes = read(fd, buf->str, BUFFER_SIZE);
 
 	if (rbytes == -1)
-		*fd_stat = INVALID;
+		*fd_stat = INVALID_FD;
 	else if (rbytes < BUFFER_SIZE)
-		*fd_stat = EOF_REACHED;
+		*fd_stat = EOF_REACHED_FD;
 	else
-		*fd_stat = NORMAL;
+		*fd_stat = NORMAL_FD;
 	buf->rbytes = rbytes;
 	buf->offset = 0;
 }
 
 static char	*final_complete_line(t_line *line, t_buff *buf, int lf_exist)
 {
-	int	start;
-	int	end;
-
 	if (lf_exist)
-	{
-		start = buf->offset;
-		end = buf->lf_idx;
-	}
+		append_buf_to_line(line, buf, buf->offset, buf->lf_idx);
 	else
-	{
-		start = 0;
-		end = buf->rbytes - 1;
-	}
-	append_buf_to_line(line, buf, start, end);
+		append_buf_to_line(line, buf, 0, buf->rbytes - 1);
 	if (!line->str)
 		return (NULL);
 	line->str[line->len] = '\0';
@@ -60,12 +50,12 @@ char	*get_next_line(int fd)
 	{
 		append_buf_to_line(&line, &buf, buf.offset, buf.rbytes - 1);
 		do_read_next(fd, &buf, &fd_stat);
-		if (fd_stat == INVALID)
+		if (fd_stat == INVALID_FD)
 		{
 			free(line.str);
 			return (NULL);
 		}
-		else if (fd_stat == EOF_REACHED)
+		else if (fd_stat == EOF_REACHED_FD)
 		{
 			if (line.len == NO_CONTENT && buf.rbytes == NO_CONTENT)
 				return (NULL);
